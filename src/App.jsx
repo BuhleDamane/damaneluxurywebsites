@@ -17,7 +17,11 @@ import CollectionsPage from './pages/CollectionsPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 
-import productsData from './data/product'; // 
+import CustomerCarePage from './pages/CustomerCarePage';
+
+
+
+import productsData from './data/product'; 
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -104,40 +108,41 @@ const App = () => {
       )}
 
       <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <HeroSection user={user} />
-              <ProductGrid
-                products={filteredProducts.slice(0, 6)} // Only featured products
-                wishlist={wishlist}
-                onToggleWishlist={handleToggleWishlist}
-                onAddToCart={handleAddToCart}
-              />
-              <Newsletter />
-              <Footer />
-            </>
-          }
+  <Route
+    path="/"
+    element={
+      <>
+        <HeroSection user={user} />
+        <ProductGrid
+          products={filteredProducts.slice(0, 3)} 
+          wishlist={wishlist}
+          onToggleWishlist={handleToggleWishlist}
+          onAddToCart={handleAddToCart}
         />
+        <Newsletter />
+        <Footer />
+      </>
+    }
+  />
+  <Route
+    path="/collections"
+    element={
+      <CollectionsPage
+        products={filteredProducts}
+        wishlist={wishlist}
+        onToggleWishlist={handleToggleWishlist}
+        onAddToCart={handleAddToCart}
+      />
+    }
+  />
+  <Route path="/about" element={<AboutPage />} />
+  <Route path="/contact" element={<ContactPage />} />
+  
+  <Route path="/customer-care" element={<CustomerCarePage />} />
 
-        <Route
-          path="/collections"
-          element={
-            <CollectionsPage
-              products={filteredProducts}
-              wishlist={wishlist}
-              onToggleWishlist={handleToggleWishlist}
-              onAddToCart={handleAddToCart}
-            />
-          }
-        />
+</Routes>
 
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
 
-      {/* Modals and Sidebars */}
       <CartSidebar
         show={showCart}
         cart={cart}
@@ -169,16 +174,15 @@ const App = () => {
         }}
       />
 
-      <LoginModal
-        show={showLogin}
-        onClose={() => setShowLogin(false)}
-        onLogin={(name) => {
-          if (name.trim()) {
-            setUser(name);
-            setShowLogin(false);
-          }
-        }}
-      />
+     <LoginModal
+  show={showLogin}
+  onClose={() => setShowLogin(false)}
+  onLogin={(email) => {
+    setUser(email); // Store logged in email
+  }}
+/>
+
+
 
       <CheckoutModal
         show={showCheckout}

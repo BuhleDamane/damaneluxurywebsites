@@ -13,7 +13,7 @@ const ProductCard = ({
       onClick={() => onProductClick(product)}
       className="bg-white shadow-lg rounded-lg overflow-hidden border border-[#d9cba3] hover:shadow-2xl transition-shadow duration-300 cursor-pointer group"
     >
-      {/* Image & Wishlist Icon */}
+
       <div className="relative">
         <img
           src={product.image}
@@ -37,7 +37,6 @@ const ProductCard = ({
         </button>
       </div>
 
-      {/* Product Info */}
       <div className="p-4 flex flex-col justify-between h-40">
         <div>
           <h3
@@ -51,7 +50,6 @@ const ProductCard = ({
           </p>
         </div>
 
-        {/* Price & Add to Cart */}
         <div className="mt-4 flex items-center justify-between">
           <span className="text-[#8B4513] font-bold text-lg">
             ${product.price.toFixed(2)}

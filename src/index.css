@@ -3,11 +3,10 @@
 @tailwind utilities;
 
 
-/* Custom global styles */
 
 body {
   font-family: 'Georgia', serif;
-  background-color: #4B2E0F; /* Dark dusty brown base */
+  background-color: #4B2E0F; 
   color: #F7E7CE; 
 }
 
@@ -22,12 +21,11 @@ body {
   border-radius: 10px;
 }
 
-/* Links */
+
 a {
   transition: color 0.3s ease;
 }
 
-/* Button focus outline */
 button:focus {
   outline: 3px solid #D4AF37;
   outline-offset: 2px;
